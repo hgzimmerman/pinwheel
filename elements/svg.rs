@@ -81,6 +81,7 @@ element!(namespace = "svg", tag = "style");
 element!(namespace = "svg", tag = "svg");
 element!(namespace = "svg", tag = "switch");
 element!(namespace = "svg", tag = "symbol");
+element!(namespace = "svg", tag = "text");
 element!(namespace = "svg", tag = "textPath");
 element!(namespace = "svg", tag = "title");
 element!(namespace = "svg", tag = "tref");
