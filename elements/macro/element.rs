@@ -475,7 +475,8 @@ fn svg_element_events() -> Events {
 		mouseover: MouseEvent,
 		/// Fired when a pointing device button is released on an element.
 		mouseup: MouseEvent,
-	})
+	))
+	.unwrap()
 }
 
 fn html_element_events() -> Events {
