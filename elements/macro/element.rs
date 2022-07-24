@@ -307,6 +307,7 @@ impl quote::ToTokens for Element {
 		};
 		let global_events = match self.namespace {
 			Namespace::Html => html_element_events(),
+			Namespace::Svg => svg_element_events(),
 			_ => Events(Vec::new()),
 		};
 		let empty_events = Events(Vec::new());
@@ -448,6 +449,33 @@ fn html_element_attributes() -> Attributes {
 		translate,
 	))
 	.unwrap()
+}
+
+fn svg_element_events() -> Events {
+	syn::parse2(quote!(
+		/// Fired when a pointing device button (e.g., a mouse's primary button) is pressed and released on a single element.
+		click: MouseEvent,
+		/// Fired when the user attempts to open a context menu.
+		contextmenu: MouseEvent,
+		/// Fired when a pointing device button (e.g., a mouse's primary button) is clicked twice on a single element.
+		dblclick: MouseEvent,
+		/// Occurs when an element is activated, for instance, through a mouse click or a keypress.
+		DOMActivate: MouseEvent,
+		/// Fired when a pointing device button is pressed on an element.
+		mousedown: MouseEvent,
+		/// Fired when a pointing device (usually a mouse) is moved over the element that has the listener attached.
+		mouseenter: MouseEvent,
+		/// Fired when the pointer of a pointing device (usually a mouse) is moved out of an element that has the listener attached to it.
+		mouseleave: MouseEvent,
+		/// Fired when a pointing device (usually a mouse) is moved while over an element.
+		mousemove: MouseEvent,
+		/// Fired when a pointing device (usually a mouse) is moved off the element to which the listener is attached or off one of its children.
+		mouseout: MouseEvent,
+		/// Fired when a pointing device is moved onto the element to which the listener is attached or onto one of its children.
+		mouseover: MouseEvent,
+		/// Fired when a pointing device button is released on an element.
+		mouseup: MouseEvent,
+	})
 }
 
 fn html_element_events() -> Events {
